@@ -90,6 +90,56 @@ for (const o of fancyMap) {
     console.log(o);
 }
 
+console.clear();
 
 
+let shopArray = [
+    { color: 'pink', dot: 'true', id: 1 },
+    { color: 'skyblue', dot: 'true', id: 5 },
+    { color: 'crimson', dot: 'false', id: 2 },
+    { color: 'pink', dot: 'false', id: 8 }
+];
+
+console.log('3:', shopArray.filter(c => c.id == 3).shift()); //gauti
+console.log('8:', !!shopArray.filter(c => c.id == 8).length()); //paziureti ar yra
+console.log('9:', !!shopArray.filter(c => c.id == 9).length()); //paziureti ar yra
+
+shopArray.push({ color: 'coral', dot: 'true', id: 17 }) //prideti
+shopArray = shopArray.filter(c => c.id != 5); //istrinti
+
+console.log(shopArray);
+
+
+const shopMap = new Map([
+    [1, { color: 'pink', dot: 'true', id: 1 }],
+    [5, { color: 'skyblue', dot: 'true', id: 5 }],
+    [2, { color: 'crimson', dot: 'false', id: 2 }],
+    [8, { color: 'pink', dot: 'false', id: 8 }]
+]);
+
+console.log('3: ', shopMap.get(3)); //gauti
+console.log('8: ', shopMap.has(8)); //paziureti ar yra
+shopMap.delete(5); //istrinti
+shopMap.set(17, { color: 'coral', dot: 'true', id: 17 }); //prideti
+
+
+
+console.log(shopMap);
+
+//JSON (STRINGIFY)
+
+let shopArrJson = JSON.stringify(shopArray);
+
+console.log(shopArrJson);
+
+let shopArrJsonBack = JSON.parse(shopArrJson);
+
+console.log(shopArrJsonBack);
+
+let d = 42;
+const dJson = JSON.stringify(d);
+console.log(dJson);
+
+const dJsonBack = JSON.parse(dJson);
+console.log(dJsonBack);
 
