@@ -23,12 +23,15 @@ console.log(arr);
 //     return arr > 10;
 // }
 // console.log(arr2);
+console.log('---A---');
 
 let biggerThanX = (array, num) => array.filter(n => n > num);
 
 console.log(biggerThanX(arr, 10))
 
 //Nr b
+console.log('---B---');
+
 const resultMathMax = Math.max(...arr);
 console.log(resultMathMax);
 
@@ -36,6 +39,7 @@ const resultIndexOf = arr.indexOf(Math.max(...arr));
 console.log(resultIndexOf);
 
 // Nr c
+console.log('---C---');
 
 const filtered = arr.filter((_, i) => i % 2 === 0)
 console.log(filtered)
@@ -45,30 +49,23 @@ arr.map((item) => sum += item);
 console.log(sum);
 
 //Nr d
+console.log('---D---');
+const arrayD = [...arr];
 
-// let sumItemPlusIndexOfItem = 0;
-// arr.map((item) => sumItemPlusIndexOfItem += (item + arr.indexOf(item)));
-// console.log(arr.indexOf(item));
-// console.log(item);
-// console.log(sumItemPlusIndexOfItem);
-// function sumItem() {
-//     let sumFunc = 0;
-//     arr.forEach(item => {
-//         sumFunc += item;
-//         return sumFunc;
+let arrD = [];
+for (let i = 0; i <= arrayD.length; i++) {
 
-//     })
+    arrD.push(arrayD[i] - i);
+}
+console.log(arrD);
 
-// }
-// sumItem
+//Nr e
+console.log('---E---');
 
-// function sumIndex() {
-//     let sumIndex = 0;
-//     arr.forEach(item => {
-//         sumIndex += arr.indexOf(item);
-//         return sumIndex;
-//         console.log(sumIndex);
-//     })
-// }
+const arrNew = [...arr];
+for (let i = 1; i < 10; i++) {
+    const randNum = getRandomInt(5, 25);
+    arrNew.push(randNum);
+}
+console.log(arrNew);
 
-//e
