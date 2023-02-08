@@ -69,3 +69,20 @@ for (let i = 1; i < 10; i++) {
 }
 console.log(arrNew);
 
+//Nr f
+console.log('---F---');
+
+let evenArr = [];
+let oddArr = [];
+
+for (let i = 0; i <= arrNew.length; i + 2) {
+    evenArr.push(arrNew[i]);
+}
+
+for (let i = 1; i <= arrNew.length; i + 2) {
+    oddArr.push(arrNew[i]);
+}
+
+console.log(evenArr);
+console.log(oddArr);
+
