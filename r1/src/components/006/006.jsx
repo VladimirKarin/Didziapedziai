@@ -1,6 +1,6 @@
 import './App.css';
-import { Racoon } from './components/006/Racoon';
-import { Cat } from './components/006/Cat';
+import { Racoon } from './Racoon';
+import { Cat } from './Cat';
 function App() {
     return (
         <div className="App">
