@@ -1,0 +1,31 @@
+.A .B .C .row-1 {
+    color: crimson;
+}
+.A .B .C .row-2 {
+    color: skyblue;
+}
+
+/* With SASS */
+/* .A .B .C {
+    .row-1 {
+        color: crimson;
+    }
+    .row-2 {
+        color: skyblue;
+    }
+}
+
+.A .B {
+
+    .bin {
+        color: coral;
+
+        &.brick {
+        color: brown;
+    }
+
+         }
+
+    
+
+*/
