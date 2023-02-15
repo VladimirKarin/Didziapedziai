@@ -76,7 +76,7 @@ for (let i = 10; i >= 1; i--) {
 console.log(`The slowest speed on turn was: ${Math.min(...speedOnTurn)} km/h`);
 
 
-//Nr. 5 BOSS LEVEL (for 10 - 1, with another for inside 5-1, with .push and Math.min)
+//Nr. 5 BOSS LEVEL (for 10 - 1, with another for inside 5-1, with .push and Math.min) //UNDONE
 
 console.log('');
 console.log('--- 5 BOSS LEVEL ---');
@@ -84,24 +84,26 @@ console.log('');
 
 
 let distance = 0;
+
+
 let cangarooAccident = rand(0, 1);
 let wheelAccident = rand(0, 1);
 let breaksAccident = rand(0, 1);
 
 do {
-    cangarooAccident
+    cangarooAccident = rand(0, 1);
     console.log(`Did a wild cangaroo just appeared? 0 - Yes, 1 - No. : ${cangarooAccident}`);
 
     if (cangarooAccident === 1) {
 
-        wheelAccident
+        wheelAccident = rand(0, 1);
         console.log(` Cangaroo on the road! Did the driver managed to turn the steering wheel? 0 - Yes, 1 - No, : ${wheelAccident}`);
 
         if (wheelAccident === 1) {
             break
         }
 
-        breaksAccident
+        breaksAccident = rand(0, 1);
         console.log(`Did the driver managed to pull the breaks? 0 - Yes, 1 - No. : ${breaksAccident}`);
 
         if (breaksAccident === 1) {
