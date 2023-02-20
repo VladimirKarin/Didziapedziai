@@ -1,6 +1,5 @@
 import randColor from '../../../functions/randColor';
 import rand from '../../../functions/rand';
-
 import { v4 as uuidv4 } from 'uuid';
 
 function AddButton({ classes, setSq }) {
