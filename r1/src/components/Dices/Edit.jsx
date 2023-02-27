@@ -10,26 +10,24 @@ const dicesCb = [
     { v: 6, t: 'Six' },
 ];
 
-function Create({ setCreateData }) {
-    const [number, setNumber] = useState(1);
-    const [size, setSize] = useState(100);
-    const [color, setColor] = useState('#ffffff');
+function Edit({ setEditData, setEditModal, editModal }) {
+    const [number, setNumber] = useState(editModal.number);
+    const [size, setSize] = useState(editModal.size);
+    const [color, setColor] = useState(editModal.color);
 
-    const create = (_) => {
-        setCreateData({
+    const edit = (_) => {
+        setEditData({
             number: parseInt(number),
             size: parseInt(size),
             color,
+            id: editModal.id,
         });
-        setNumber(1);
-        setSize(100);
-        setColor('#ffffff');
+        setEditModal(null);
     };
 
     return (
         <>
-            <div className="title">Create</div>
-            <div className="dice-edit-create create">
+            <div className="dice-edit-create edit">
                 <div className="top">
                     <div className="rotate">
                         <div className="input-bin range">
@@ -58,11 +56,11 @@ function Create({ setCreateData }) {
                             <span key={c.v}>
                                 <input
                                     type="checkbox"
-                                    id={'r_' + c.v}
+                                    id={'e_' + c.v}
                                     checked={number === c.v}
                                     onChange={() => setNumber(c.v)}
                                 />
-                                <label className="cb" htmlFor={'r_' + c.v}>
+                                <label className="cb" htmlFor={'e_' + c.v}>
                                     {c.t}
                                 </label>
                             </span>
@@ -79,8 +77,11 @@ function Create({ setCreateData }) {
                             style={{ color: mutateColor(color) }}
                         />
                     </div>
-                    <button className="blue" onClick={create}>
-                        add
+                    <button className="blue" onClick={edit}>
+                        save
+                    </button>
+                    <button className="red" onClick={() => setEditModal(null)}>
+                        cancel
                     </button>
                 </div>
             </div>
@@ -88,4 +89,4 @@ function Create({ setCreateData }) {
     );
 }
 
-export default Create;
+export default Edit;
