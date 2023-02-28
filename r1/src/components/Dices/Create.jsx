@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import mutateColor from '../../functions/randColor';
+import mutateColor from '../../Functions/functions/randColor';
 
 const dicesCb = [
     { v: 1, t: 'One' },
