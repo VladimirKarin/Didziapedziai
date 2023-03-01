@@ -1,19 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.scss';
-import BaseButton from './components/011/Design/BaseButton';
-import BlueButton from './components/011/Design/BlueButton';
-import CoralButton from './components/011/Design/CoralButton';
-import GrayButton from './components/011/Design/GrayButton';
-import RedButton from './components/011/Design/RedButton';
-import Sq from './components/011/Design/Sq';
+import BaseButton from './Design/BaseButton';
+import BlueButton from './Design/BlueButton';
+import CoralButton from './Design/CoralButton';
+import GrayButton from './Design/GrayButton';
+import RedButton from './Design/RedButton';
+import Sq from './Design/Sq';
 import {
     withAdd,
     withClear,
     withColor,
     withSpinAll,
     withStop,
-} from './components/011/HOCs/sq';
+} from './HOCs/sq';
 // import Circle from './components/011/Circle';
 // import Number from './components/011/Number';
 

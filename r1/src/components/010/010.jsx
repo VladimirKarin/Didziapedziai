@@ -1,16 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import { useState } from 'react';
-import AddButton from './components/010/Buttons/AddButton';
-import ClearButton from './components/010/Buttons/ClearButton';
-import ColorButton from './components/010/Buttons/CloneButton';
-import DefaultSortButton from './components/010/Buttons/DefaultSortButton';
-import Filter500Button from './components/010/Buttons/Filter500Button';
-import ShowAllButton from './components/010/Buttons/ShowAllButton';
-import SortButton from './components/010/Buttons/SortButton';
-import SpinAllButton from './components/010/Buttons/SpinAllButton';
-import StopSpinButton from './components/010/Buttons/StopSpinButton';
-import Sq from './components/009/Sq';
+import AddButton from './Buttons/AddButton';
+import ClearButton from './Buttons/ClearButton';
+import ColorButton from './Buttons/CloneButton';
+import DefaultSortButton from './Buttons/DefaultSortButton';
+import Filter500Button from './Buttons/Filter500Button';
+import ShowAllButton from './Buttons/ShowAllButton';
+import SortButton from './Buttons/SortButton';
+import SpinAllButton from './Buttons/SpinAllButton';
+import StopSpinButton from './Buttons/StopSpinButton';
+import Sq from '../009/Sq';
 
 function App() {
     const [sq, setSq] = useState([]);

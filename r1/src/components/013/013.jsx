@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.scss';
-import Products from './components/013/Products';
+import Products from './Products';
 
 function App() {
     return (
