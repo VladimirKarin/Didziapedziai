@@ -24,15 +24,15 @@ function App() {
                 <Menu setPage={setPage} />
 
                 {page === 'home' && null !== content ? (
-                    <Home title={content.title} />
+                    <Home color={content.color} title={content.title} />
                 ) : null}
 
                 {page === 'fox' && null !== content ? (
-                    <Fox title={content.title} />
+                    <Fox color={content.color} title={content.title} />
                 ) : null}
 
                 {page === 'racoon' && null !== content ? (
-                    <Racoon title={content.title} />
+                    <Racoon color={content.color} title={content.title} />
                 ) : null}
 
                 {null == content ? <h1>LOADING...</h1> : null}

@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
 const port = 3003;
+
+app.use(cors());
 
 const menu = `
 <a href="/">home</a>
@@ -34,15 +37,15 @@ app.get('/fox', (req, res) => {
 
 // API
 app.get('/api/home', (req, res) => {
-    res.json({ title: 'Hello Forest!' });
+    res.json({ title: 'Hello Forest!', color: 'white' });
 });
 
 app.get('/api/racoon', (req, res) => {
-    res.json({ title: 'Hello RACOON!' });
+    res.json({ title: 'Hello RACOON!', color: 'skyblue' });
 });
 
 app.get('/api/fox', (req, res) => {
-    res.json({ title: 'Hello FOX!' });
+    res.json({ title: 'Hello FOX!', color: 'crimson' });
 });
 
 
