@@ -38,7 +38,7 @@
 }
 
 h2 {
-    color: darkblue;
+    color: darkcyan;
 }
 
 h1 {
@@ -88,12 +88,14 @@ $butonRed: crimson;
 $butonCoral: coral;
 button {
     display: inline-block;
+    user-select: none;
     padding: 7px 30px;
     margin: 20px 10px;
     border-radius: 10px;
     box-sizing: border-box;
     text-decoration: none;
     font-weight: 300;
+    font-size: 1.1em;
     border: none;
     outline: none;
     text-align: center;
@@ -101,6 +103,7 @@ button {
     text-transform: uppercase;
     background-color: $butonGray;
     color: white;
+    cursor: pointer;
     &:hover {
         background-color: darken($butonGray, 20%);
     }
@@ -143,7 +146,7 @@ button {
     .sq {
         width: 150px;
         height: 150px;
-        border: 5px solid yellowgreen;
+        border: 5px solid #9acd32;
         border-radius: 10px;
         margin: 5px;
         box-sizing: border-box;
@@ -154,11 +157,15 @@ button {
         color: white;
         background-color: darkgray;
         flex-wrap: wrap;
+        &.sm {
+            height: 70px;
+            width: 70px;
+        }
         &.spin {
             animation: App-logo-spin infinite 5s linear;
         }
-        .spin-bakc {
-            animation: app-logo-spin infinite 5s linear;
+        .spin-back {
+            animation: App-logo-spin infinite 5s linear;
             animation-direction: reverse;
         }
     }
@@ -246,7 +253,6 @@ button {
         width: 100%;
         box-sizing: border-box;
     }
-
     .cb-bin {
         display: flex;
         flex-direction: row;
@@ -254,11 +260,11 @@ button {
         justify-content: flex-start;
         width: 100%;
         label.cb {
-            font-size: 0.75em;
+            font-size: 0.7em;
             padding: 0 15px 0 5px;
             cursor: pointer;
             user-select: none;
-            color: darkgray;
+            color: darkgrey;
         }
         input {
             display: none;
@@ -269,5 +275,24 @@ button {
     }
     button {
         max-width: 100px;
+    }
+}
+
+.box-area {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px 20px 20px;
+    border: 5px dotted orange;
+    position: relative;
+    min-height: 200px;
+    min-width: 400px;
+    .title {
+        position: absolute;
+        background-color: orange;
+        padding: 10px;
+        top: -20px;
+        left: 50px;
     }
 }

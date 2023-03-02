@@ -1,104 +1,34 @@
-import { useEffect, useState } from 'react';
-import Create from './components/Dices-Server/Create';
-import List from './components/Dices-Server/List';
-import Edit from './components/Dices-Server/Edit';
-import Messages from './components/Dices-Server/Messages';
-import './components/Dices-Server/style.scss';
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
+import './App.scss';
+import BoxLarge from './components/018/BoxLarge';
+import GlobalUserContext from './components/018/GlobalUserContext';
+import { GlobalSqContextProvider } from './components/018/GlobalSqContext';
+import rand from './Functions/functions/rand';
+import Buttons from './components/018/Buttons';
 
-const URL = 'http://localhost:3003/dices';
+const users = ['Bebras', 'Zebras', 'Ūdra'];
 
 function App() {
-    const [lastUpdate, setLastUpdate] = useState(Date.now());
-    const [list, setList] = useState(null);
-    const [createData, setCreateData] = useState(null);
-    const [deleteModal, setDeleteModal] = useState(null);
-    const [deleteData, setDeleteData] = useState(null);
-    const [editModal, setEditModal] = useState(null);
-    const [editData, setEditData] = useState(null);
-    const [messages, setMessages] = useState(null);
-
-    useEffect(() => {
-        axios.get(URL).then((res) => {
-            setList(res.data);
-        });
-    }, [lastUpdate]);
-
-    useEffect(() => {
-        if (null === createData) {
-            return;
-        }
-        // pazadas
-        const promiseId = uuidv4();
-        setList((d) => [...d, { ...createData, promiseId }]);
-
-        // serveris
-        axios.post(URL, { ...createData, promiseId }).then((res) => {
-            setList((d) =>
-                d.map((d) =>
-                    res.data.promiseId === d.promiseId
-                        ? { ...d, id: res.data.id, promiseId: null }
-                        : { ...d }
-                )
-            );
-            console.log(res.data);
-            msg(res.data.message.text, res.data.message.type);
-        });
-    }, [createData]);
-
-    useEffect(() => {
-        if (null === deleteData) {
-            return;
-        }
-        axios.delete(URL + '/' + deleteData.id).then((res) => {
-            console.log(res.data);
-            setLastUpdate(Date.now());
-            msg(res.data.message.text, res.data.message.type);
-        });
-    }, [deleteData]);
-
-    useEffect(() => {
-        if (null === editData) {
-            return;
-        }
-        axios.delete(URL + '/' + editData.id, editData).then((res) => {
-            console.log(res.data);
-            setLastUpdate(Date.now());
-            msg(res.data.message.text, res.data.message.type);
-        });
-    }, [editData]);
-
-    const msg = (text, type) => {
-        const uuid = uuidv4();
-        setMessages((m) => [...(m ?? []), { text, type, id: uuid }]);
-        setTimeout(() => {
-            setMessages((m) => m.filter((m) => uuid !== m.id));
-        }, 5000);
-    };
+    const [user, setUser] = useState(users[rand(0, 2)]);
 
     return (
-        <>
-            <div className="dices">
-                <div className="content">
-                    <div className="left">
-                        <Create setCreateData={setCreateData} />
-                    </div>
-                    <div className="right">
-                        <List
-                            list={list}
-                            setDeleteModal={setDeleteModal}
-                            deleteModal={deleteModal}
-                            setDeleteData={setDeleteData}
-                            editModal={editModal}
-                            setEditModal={setEditModal}
-                            setEditData={setEditData}
-                        />
-                    </div>
+        <GlobalUserContext.Provider value={{ user }}>
+            <GlobalSqContextProvider>
+                <div className="App">
+                    <header className="App-header">
+                        <BoxLarge />
+
+                        <Buttons />
+                        <button
+                            className="red"
+                            onClick={() => setUser(users[rand(0, 2)])}
+                        >
+                            user
+                        </button>
+                    </header>
                 </div>
-            </div>
-            {messages && <Messages messages={messages} />}
-        </>
+            </GlobalSqContextProvider>
+        </GlobalUserContext.Provider>
     );
 }
 
