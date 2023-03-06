@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import './App.scss';
-import Fox from './components/016/Fox';
-import Home from './components/016/Home';
-import Menu from './components/016/Menu';
-import Racoon from './components/016/Racoon';
+import Fox from './Fox';
+import Home from './Home';
+import Menu from './Menu';
+import Racoon from './Racoon';
 import axios from 'axios';
 
 function App() {
