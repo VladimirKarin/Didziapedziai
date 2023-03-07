@@ -1,60 +1,27 @@
-import { useState } from 'react';
-import './App.scss';
-import { useAdd23 } from './components/019/useAdd23';
-import { useLocalStorage } from './components/019/useLocalStorage';
-import { useSimpleState } from './components/019/useSimpleState';
+import { useEffect, useState } from 'react';
+import Create from './components/Dices2/Create';
+import List from './components/Dices2/List';
+import Messages from './components/Dices2/Messages';
+import './components/Dices2/style.scss';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import { GlobalContextProvider } from './components/Dices2/GlobalContext';
 
 function App() {
-    const [count1, setCount1] = useState(1);
-    const [count2, setCount2] = useSimpleState(10);
-    const [count3, setCount3] = useLocalStorage(24, 'couter123');
-    const [count4, setCount4] = useAdd23(42);
-
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1>
-                    <span style={{ color: 'crimson', padding: '10px' }}>
-                        {count1}
-                    </span>
-                    <span style={{ color: 'skyblue', padding: '10px' }}>
-                        {count2}
-                    </span>
-                    <span style={{ color: 'coral', padding: '10px' }}>
-                        {count3}
-                    </span>
-                    <span style={{ color: 'crimson', padding: '10px' }}>
-                        {count4}
-                    </span>
-                </h1>
-                <div className="sq-bin">
-                    <button
-                        className="red"
-                        onClick={() => setCount1((c) => c + 1)}
-                    >
-                        +1
-                    </button>
-                    <button
-                        className="blue"
-                        onClick={() => setCount2((c) => c + 15)}
-                    >
-                        +15
-                    </button>
-                    <button
-                        className="coral"
-                        onClick={() => setCount3((c) => c - 10)}
-                    >
-                        -10
-                    </button>
-                    <button
-                        className="redl"
-                        onClick={() => setCount4((c) => c + !c)}
-                    >
-                        + 23
-                    </button>
+        <GlobalContextProvider>
+            <div className="dices">
+                <div className="content">
+                    <div className="left">
+                        <Create />
+                    </div>
+                    <div className="right">
+                        <List />
+                    </div>
                 </div>
-            </header>
-        </div>
+            </div>
+            {<Messages />}
+        </GlobalContextProvider>
     );
 }
 
