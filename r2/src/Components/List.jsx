@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import { Global } from './Global';
 
 function List() {
-    const { list } = useContext(Global);
+    const { list, setDeleteModal, setAddModal, setRemModal } =
+        useContext(Global);
 
     return (
         <div className="card mt-4">
@@ -11,7 +12,40 @@ function List() {
                 <ul className="list-group">
                     {list?.map((n) => (
                         <li key={n.id} className="list-group-item">
-                            {n.number}
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-6">
+                                        <h2>{n.number}</h2>
+                                    </div>
+                                    <div className="col-2">
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary"
+                                            onClick={() => setAddModal(n)}
+                                        >
+                                            ADD
+                                        </button>
+                                    </div>
+                                    <div className="col-2">
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary"
+                                            onClick={() => setRemModal(n)}
+                                        >
+                                            REM
+                                        </button>
+                                    </div>
+                                    <div className="col-2">
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger"
+                                            onClick={() => setDeleteModal(n)}
+                                        >
+                                            DELETE
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     ))}
                 </ul>
