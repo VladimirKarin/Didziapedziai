@@ -4,6 +4,7 @@ import { useModal } from '../Use/useModal';
 import { useRead } from '../Use/useRead';
 import { useWrite } from '../Use/useWrite';
 import axios from 'axios';
+import { useReadUsers } from '../Use/useReadUsers';
 
 export const Global = createContext();
 
@@ -20,6 +21,8 @@ export const GlobalProvider = ({ children }) => {
     ] = useModal();
     const [messages, setMessage] = useMessages([]);
 
+    const [users, setUpdateUsers] = useReadUsers();
+
     const [route, setRoute] = useState('numbers');
     const [logged, setLogged] = useState(null);
     const [authName, setAuthName] = useState(null);
@@ -33,6 +36,14 @@ export const GlobalProvider = ({ children }) => {
             });
         }
     }, [response, setMessage, setUpdate]);
+
+    useEffect(() => {
+        if (route === 'users') {
+            setUpdateUsers(Date.now());
+        } else if (route === 'numbers') {
+            setUpdate(Date.now());
+        }
+    }, [route]);
 
     const logOut = (_) => {
         axios
@@ -69,6 +80,9 @@ export const GlobalProvider = ({ children }) => {
                 logOut,
                 logged,
                 setLogged,
+                //users
+                users,
+                setUpdateUsers,
             }}
         >
             {children}

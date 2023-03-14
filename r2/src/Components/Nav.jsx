@@ -22,6 +22,17 @@ function Nav() {
                                     Numbers
                                 </span>
                             </li>
+                            <li className="nav-item">
+                                <span
+                                    onClick={(_) => setRoute('users')}
+                                    className={
+                                        'nav-link' +
+                                        (route === 'users' ? ' active' : '')
+                                    }
+                                >
+                                    Users
+                                </span>
+                            </li>
                         </ul>
                     </div>
                     <ul className="navbar-nav">
@@ -39,14 +50,24 @@ function Nav() {
                                 </li>
                             </>
                         ) : (
-                            <li className="nav-item">
-                                <span
-                                    onClick={(_) => setRoute('login')}
-                                    className="nav-link"
-                                >
-                                    Login
-                                </span>
-                            </li>
+                            <>
+                                <li className="nav-item">
+                                    <span
+                                        onClick={(_) => setRoute('login')}
+                                        className="nav-link"
+                                    >
+                                        Login
+                                    </span>
+                                </li>
+                                <li className="nav-item">
+                                    <span
+                                        onClick={(_) => setRoute('register')}
+                                        className="nav-link"
+                                    >
+                                        Register
+                                    </span>
+                                </li>
+                            </>
                         )}
                     </ul>
                 </div>

@@ -2,20 +2,26 @@ import { useContext } from 'react';
 import Auth from './Auth';
 import { Global } from './Global';
 import Login from './Login';
-import LuckyNumber from './LuckyNumber';
+import LuckyNumbers from './LuckyNumber';
+import Register from './Register';
+import Users from './Users';
 
 function Routes() {
     const { route } = useContext(Global);
 
     switch (route) {
         case 'numbers':
+            return <LuckyNumbers />;
+        case 'users':
             return (
                 <Auth>
-                    <LuckyNumber />
+                    <Users />
                 </Auth>
             );
         case 'login':
             return <Login />;
+        case 'register':
+            return <Register />;
         default:
             return null;
     }
