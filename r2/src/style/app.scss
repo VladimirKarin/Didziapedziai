@@ -9,3 +9,11 @@
     right: 50px;
     max-width: 300px;
 }
+
+.nav-link {
+    cursor: pointer;
+}
+
+.nav-link:active {
+    color: skyblue;
+}
