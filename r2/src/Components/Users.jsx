@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Global } from './Global';
 
 function Users() {
-    const { users, setUsers } = useContext(Global);
+    const { users, setUserDelete } = useContext(Global);
 
     useEffect(() => {}, []);
 
@@ -29,6 +29,9 @@ function Users() {
                                                         <button
                                                             type="button"
                                                             className="btn btn-danger"
+                                                            onClick={(_) =>
+                                                                setUserDelete(u)
+                                                            }
                                                         >
                                                             DELETE
                                                         </button>

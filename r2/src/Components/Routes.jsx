@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Auth from './Auth';
 import { Global } from './Global';
+import Home from './Home';
 import Login from './Login';
 import LuckyNumbers from './LuckyNumber';
 import Register from './Register';
@@ -10,14 +11,25 @@ function Routes() {
     const { route } = useContext(Global);
 
     switch (route) {
+        case 'home':
+            return (
+                <Auth roles={[]}>
+                    <Home />
+                </Auth>
+            );
         case 'numbers':
-            return <LuckyNumbers />;
+            return (
+                <Auth roles={['admin', 'manager']}>
+                    <LuckyNumbers />
+                </Auth>
+            );
         case 'users':
             return (
-                <Auth>
+                <Auth roles={['admin']}>
                     <Users />
                 </Auth>
             );
+
         case 'login':
             return <Login />;
         case 'register':
