@@ -8,7 +8,7 @@ function Register() {
     const [psw, setPsw] = useState('');
     const [psw2, setPsw2] = useState('');
 
-    // const {setLogged, setAuthName} = useContext(Global);
+    const { setRoute } = useContext(Global);
 
     const register = (_) => {
         if (name.length < 3) {
@@ -37,6 +37,7 @@ function Register() {
                     setPsw('');
                     setPsw2('');
                     setError(null);
+                    setRoute('login');
                 } else {
                     setError('Server error');
                 }

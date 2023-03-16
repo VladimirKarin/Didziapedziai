@@ -11,7 +11,7 @@ export const useWriteUsers = (_) => {
             return;
         }
         axios
-            .delete(URL + '/' + destroy.id)
+            .delete(URL + '/' + destroy.id, { withCredentials: true })
             .then((res) => setResponse(res.data))
             .catch((error) => setResponse(error));
     }, [destroy]);

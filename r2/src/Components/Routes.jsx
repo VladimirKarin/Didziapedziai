@@ -3,7 +3,7 @@ import Auth from './Auth';
 import { Global } from './Global';
 import Home from './Home';
 import Login from './Login';
-import LuckyNumbers from './LuckyNumber';
+import LuckyNumbers from './LuckyNumbers';
 import Register from './Register';
 import Users from './Users';
 
@@ -13,19 +13,19 @@ function Routes() {
     switch (route) {
         case 'home':
             return (
-                <Auth roles={[]}>
+                <Auth roles={''}>
                     <Home />
                 </Auth>
             );
         case 'numbers':
             return (
-                <Auth roles={['admin', 'manager']}>
+                <Auth roles={'admin,manager'}>
                     <LuckyNumbers />
                 </Auth>
             );
         case 'users':
             return (
-                <Auth roles={['admin']}>
+                <Auth roles={'admin'}>
                     <Users />
                 </Auth>
             );

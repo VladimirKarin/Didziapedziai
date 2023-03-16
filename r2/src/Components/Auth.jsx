@@ -6,18 +6,23 @@ import { Global } from './Global';
 import RoleError from './RoleError';
 
 function Auth({ children, roles }) {
-    const { setAuthName, logged, setLogged, route } = useContext(Global);
+    const { setAuthName, logged, setLogged, route, setUpdate, setUpdateUsers } =
+        useContext(Global);
 
     useEffect(() => {
         axios
             .get('http://localhost:3003/login', { withCredentials: true })
             .then((res) => {
-                console.log(res.data);
                 if (res.data.status === 'ok') {
                     setAuthName(res.data.name);
-                    if (roles.length) {
-                        if (roles.includes(res.data.role)) {
+                    if (roles) {
+                        if (roles.split(',').includes(res.data.role)) {
                             setLogged(1);
+                            if (route === 'numbers') {
+                                setUpdate(Date.now());
+                            } else if (route === 'users') {
+                                setUpdateUsers(Date.now());
+                            }
                         } else {
                             setLogged(3);
                         }
@@ -33,7 +38,7 @@ function Auth({ children, roles }) {
                     }
                 }
             });
-    }, [route]);
+    }, [roles, route, setUpdate, setUpdateUsers, setLogged, setAuthName]);
 
     if (null === logged) {
         return <Loader />;
