@@ -2,12 +2,20 @@ import { useContext } from 'react';
 import { Global } from './Global';
 
 function List() {
-    const { trees } = useContext(Global);
+    const { trees, setDeleteTree, setEditModalTree, logOut } =
+        useContext(Global);
 
     return (
         <div className="card mt-4">
             <div className="card-header">
                 <h2>Big Forest</h2>
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={logOut}
+                >
+                    Logout
+                </button>
             </div>
             <div className="card-body">
                 <ul className="list-group">
@@ -28,14 +36,16 @@ function List() {
                                         <button
                                             type="button"
                                             className="btn btn-primary"
+                                            onClick={() => setEditModalTree(t)}
                                         >
-                                            PLANT
+                                            rePLANT
                                         </button>
                                     </div>
                                     <div className="col-2">
                                         <button
                                             type="button"
                                             className="btn btn-primary"
+                                            onClick={() => setDeleteTree(t)}
                                         >
                                             CUT
                                         </button>
