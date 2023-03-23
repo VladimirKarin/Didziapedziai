@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import { useState } from 'react';
+import { useFile } from '../Use/useFile';
 import { Global } from './Global';
 
 function Create() {
     const [title, setTitle] = useState('');
     const [height, setHeight] = useState(0);
     const [type, setType] = useState(1);
+    const [file, readFile, remImage] = useFile();
 
     const { setCreateTree, types } = useContext(Global);
 
@@ -14,10 +16,12 @@ function Create() {
             title,
             height: parseInt(height) / 100,
             type: parseInt(type),
+            file,
         });
         setTitle('');
         setHeight(0);
         setType(1);
+        remImage();
     };
 
     return (
@@ -62,8 +66,31 @@ function Create() {
                         ))}
                     </select>
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="formFile" className="form-label">
+                        Tree image
+                    </label>
+                    <input
+                        className="form-control form-control-sm"
+                        id="formFile"
+                        type="file"
+                        onChange={readFile}
+                    />
+                </div>
+                <div>
+                    {file ? (
+                        <img
+                            className="upload-image mb-3"
+                            src={file}
+                            alt="to upload"
+                        />
+                    ) : null}
+                </div>
 
-                <button className="btn btn-primary" onClick={add}>
+                <button className="m-1 btn btn-danger" onClick={remImage}>
+                    Remove Image
+                </button>
+                <button className="m-1 btn btn-primary" onClick={add}>
                     PLANT
                 </button>
             </div>
