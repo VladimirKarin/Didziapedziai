@@ -1,8 +1,11 @@
-import { NAVIGATE } from "../types";
+import { NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_LIST } from "../types";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function main(state, action) {
 
     const c = structuredClone(state);
+
+    console.log('REDUCER: ', action);
 
     switch (action.type) {
         case NAVIGATE:
@@ -18,6 +21,30 @@ export default function main(state, action) {
                     c.pageTop = defaultNav;
             }
             return c;
+        case SECTIONS_LIST:
+            c.pageTop = 'nav';
+            c.page = action.payload.page;
+            c.data = action.payload.data;
+            return c;
+
+        case SECTIONS_CREATE:
+            const uuid = uuidv4();
+            if (!c.messages) {
+                c.messages = [];
+            }
+            c.messages.push({ ...action.payload.msg, id: uuid })
+
+            setTimeout(() => {
+                action.doDispach({
+                    type: REMOVE_MESSAGE,
+                    payload: {
+                        uuid
+                    }
+                });
+            }, 3000);
+            return c;
+
+        default:
     }
 
 

@@ -31,9 +31,9 @@ export default function Nav() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Pricing
-                            </a>
+                            <Link action="sections-list" className="nav-link">
+                                Sričių sąrašas
+                            </Link>
                         </li>
                     </ul>
                     <span className="navbar-text">
