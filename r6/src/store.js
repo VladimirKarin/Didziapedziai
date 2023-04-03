@@ -1,13 +1,14 @@
-import { createContext, useReducer } from 'react';
-import { sectionsCreate, sectionsList } from './actions';
+import { createContext, useReducer, useState } from 'react';
+import { sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
-import { useMessages } from './Use/useMessages';
 
-const actionsList = {
+export const actionsList = {
     'sections-list': sectionsList,
     'sections-create': sectionsCreate,
-
+    'sections-delete': sectionsDelete,
+    'sections-show-edit': sectionsShowEdit,
+    'sections-edit': sectionsEdit,
 }
 
 const url = 'http://localhost:3003/';
@@ -16,6 +17,9 @@ const url = 'http://localhost:3003/';
 export const Store = createContext();
 
 export const Provider = (props) => {
+
+
+    const [loader, setLoader] = useState(false);
 
     const [store, dispach] = useReducer(main, {
         page: 'home',
@@ -26,6 +30,7 @@ export const Provider = (props) => {
     const dataDispach = action => {
         if (!action.payload || !action.payload.url) {
             dispach(action);
+            setLoader(false);
         } else {
             const args = [url + action.payload.url];
             if (action.payload.body) {
@@ -40,6 +45,7 @@ export const Provider = (props) => {
                         }, doDispach
                     }
                     dispach(action);
+                    setLoader(false);
                 })
         }
 
@@ -58,7 +64,9 @@ export const Provider = (props) => {
             store,
             dispach: dataDispach,
             actionsList,
-            messages: store.messages
+            messages: store.messages,
+            loader,
+            start: () => setLoader(true)
         }}>
             {props.children}
         </Store.Provider>
